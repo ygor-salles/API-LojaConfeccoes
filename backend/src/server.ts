@@ -45,26 +45,26 @@ app.listen(3000, async () => {
         {
             codigo: 101,
             descricao: 'Calça jeans masculina Levis nro 40',
-            valor: 150,
-            disconto: 10,
+            valorUnitario: 150,
+            desconto: 10,
         },
         {
             codigo: 102,
             descricao: 'Saia jeans nro 8000',
-            valor: 8000,
-            disconto: 90,
+            valorUnitario: 8000,
+            desconto: 90,
         },
         {
             codigo: 103,
             descricao: 'Xbox Series X',
-            valor: 5000,
-            disconto: 0,
+            valorUnitario: 5000,
+            desconto: 0,
         },
         {
             codigo: 104,
             descricao: 'Playstation 5',
-            valor: 5000,
-            disconto: 0,
+            valorUnitario: 5000,
+            desconto: 0,
         },
     ]
     await Product.deleteMany({})
