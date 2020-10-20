@@ -19,11 +19,13 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     //Preenchendo a lista de produtos que vem do banco
     this.produtoService.read().subscribe(produto => this.produtos = produto)
+    this.showNotes = false
   }
 
   title = 'Loja de Confecções'
   confirm_msg = ''
   nomeClienteTabela = ''
+  showNotes: boolean
 
   //Capturado do formulário
   nomeCliente: string
@@ -83,6 +85,15 @@ export class AppComponent implements OnInit {
     this.quantidade = null
     this.tabela = []
     this.totalFinal = 0
+  }
+
+  clickNotes() {
+    this.showNotes = true
+    this.notaFiscalService.read().subscribe(nf => this.notasFiscais = nf)
+  }
+
+  back(){
+    this.showNotes = false
   }
 
 }

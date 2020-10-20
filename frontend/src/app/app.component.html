@@ -1,6 +1,13 @@
-<div class="content homePrincipal">
+<div class="content homePrincipal" *ngIf="!showNotes">
   <div class="container" style="max-width: 100%;">
-    <h2>{{ title }}</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <h2>{{ title }}</h2>
+      </div>
+      <div class="col-md-9" style="text-align: right; padding-top: 5px;">
+        <button class="btn btn-success" (click)="clickNotes()">Visualizar Notas</button>
+      </div>
+    </div>
     <hr>
     <form #orderForm="ngForm">
       <div class="row mb-xlg">
@@ -74,5 +81,45 @@
           </tfoot>
         </table>
     </div>
+  </div>
+</div>
+
+<!-- Tela que será exibida o relatório de notas -->
+<div class="col-md-12" *ngIf="showNotes">
+  <div class="card" *ngFor="let note of notasFiscais">
+    <div class="card-header">
+      <div style="float: left;">
+        <h6>Nota: {{note._id}}</h6>
+        <h6>Nome: {{note.nomeCliente}}</h6>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Descrição</th>
+              <th>Valor unitário</th>
+              <th>Desconto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of note.produtosComprados">
+              <td>{{product.codigo}}</td>
+              <td>{{product.descricao}}</td>
+              <td>{{product.valorUnitario}}</td>
+              <td>{{product.desconto}}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+        <h3>Total: R{{ note.total | currency}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div style="float: right; padding: 5px 0 15px 0;">
+    <button type="button" class="btn btn-primary" (click)="back()">Voltar</button>
   </div>
 </div>
