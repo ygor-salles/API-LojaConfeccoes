@@ -10,8 +10,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  //Lista de produtos que vem do banco
+  //Lista de produtos e notas fiscais que vem do banco
   produtos: Produto[]
+  notasFiscais: NotaFiscal[]
 
   constructor(private produtoService: ProdutoService, private notaFiscalService: NotaFiscalService) { }
 
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
     this.produtoService.read().subscribe(produto => this.produtos = produto)
   }
 
-  title = 'loja de Confecções'
+  title = 'Loja de Confecções'
   confirm_msg = ''
   nomeClienteTabela = ''
 

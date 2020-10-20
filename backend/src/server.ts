@@ -43,30 +43,37 @@ app.get('/invoice', async (_req, res) => {
 app.listen(3000, async () => {
     const produtos = [
         {
-            codigo: 101,
-            descricao: 'Calça jeans masculina Levis nro 40',
-            valorUnitario: 150,
+            codigo: 123,
+            descricao: 'Blusa de Moletom',
+            valorUnitario: 129.9,
+            desconto: 0,
+        },
+        {
+            codigo: 234,
+            descricao: 'Calça Jeans',
+            valorUnitario: 79.90,
             desconto: 10,
         },
         {
-            codigo: 102,
-            descricao: 'Saia jeans nro 8000',
-            valorUnitario: 8000,
-            desconto: 90,
+            codigo: 345,
+            descricao: 'Jaqueta de Couro',
+            valorUnitario: 249.90,
+            desconto: 20,
         },
         {
-            codigo: 103,
-            descricao: 'Xbox Series X',
-            valorUnitario: 5000,
+            codigo: 456,
+            descricao: 'Cueca Box',
+            valorUnitario: 25,
             desconto: 0,
         },
         {
-            codigo: 104,
-            descricao: 'Playstation 5',
-            valorUnitario: 5000,
+            codigo: 567,
+            descricao: '3 par de meia',
+            valorUnitario: 9.90,
             desconto: 0,
         },
     ]
+    
     await Product.deleteMany({})
     for (const iterator of produtos) {
         await Product.create(iterator)
